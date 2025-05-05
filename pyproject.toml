@@ -1,0 +1,30 @@
+[project]
+name = "interp_tools"
+version = "0.0.1"
+description = "Adam's interp tools"
+requires-python = ">=3.10"
+readme = "README.md"
+dependencies = [
+    "pydantic",
+    "wandb",
+    "fire",
+    "tqdm",
+    "pytest",
+    "ipykernel",
+    "openai",
+    "pandas",
+    "einops",
+    "circuitsvis>=1.43.3",
+    "jaxtyping",
+    "accelerate",
+    "datasets",
+    "huggingface-hub",
+    "matplotlib",
+    "torch",
+    "transformers",
+    "numpy"
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

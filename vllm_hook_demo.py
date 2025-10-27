@@ -22,6 +22,10 @@
 # steering at specific positions is a bit more involved, as you can see
 # we manually batch over prompts so there's only a single prefill -> decode pass
 
+# you could also avoid manual batching and just generate on everything at once, but then you'd have to deal
+# with the chunked prefill, which would probably be easiest with some global variables to keep track of which prompts have been seen so far and then line it up with the position ids you currently are seeing in the hook
+# I didn't do this because our use case was already fast to run and it would have made the code more complicated
+
 # indexing into input and output in the hook should be tested
 # different models will sometimes have different elements in the input / output tuples
 # it's a good idea to compare the activations you collect to a huggingface reference

@@ -9,17 +9,11 @@ def add_mistral_v3_chat_template(prompts: list[str]) -> list[str]:
 
 
 def add_gemma_chat_template(prompts: list[str]) -> list[str]:
-    return [
-        f"<bos><start_of_turn>user\n{prompt}<end_of_turn>\n<start_of_turn>model\n"
-        for prompt in prompts
-    ]
+    return [f"<bos><start_of_turn>user\n{prompt}<end_of_turn>\n<start_of_turn>model\n" for prompt in prompts]
 
 
 def add_qwen_chat_template(prompts: list[str]) -> list[str]:
-    return [
-        f"<|im_start|>user\n{prompt}<|im_end|>\n<|im_start|>assistant\n"
-        for prompt in prompts
-    ]
+    return [f"<|im_start|>user\n{prompt}<|im_end|>\n<|im_start|>assistant\n" for prompt in prompts]
 
 
 def add_chat_template(prompts: list[str], model_name: str) -> list[str]:
@@ -117,7 +111,7 @@ def get_submodule(model: AutoModelForCausalLM, layer: int):
 
     if "pythia" in model_name:
         return model.gpt_neox.layers[layer]
-    elif "gemma" in model_name or "mistral" in model_name:
+    elif "gemma" in model_name or "mistral" in model_name or "Llama" in model_name or "Qwen" in model_name:
         return model.model.layers[layer]
     else:
         raise ValueError(f"Please add submodule for model {model_name}")
